@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+.principal {
+    min-height: calc(100vh - 64px);/* 100vh menos la altura del footer */
+    @apply flex justify-center;
+}
+
+.aside {
+    @apply flex flex-col font-semibold text-gray-700 bg-gray-100 shadow w-60 h-full;
+    min-height: calc(100vh - 64px);/* 100vh menos la altura del footer */
+    text-align: center;
+}
+
+.main {
+    @apply w-full h-full;
+    min-height: calc(100vh - 64px);/* 100vh menos la altura del footer */
+    overflow: auto; /* Muestra la scrollbar si es necesario */
+}
+
+.icono {
+    @apply h-6 w-6
+}
+
+
+a {
+    @apply text-gray-700;
+    text-decoration: none; /* Elimina el subrayado */
+}

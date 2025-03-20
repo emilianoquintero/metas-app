@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+.meta {
+    @apply flex p-2 justify-between;
+}
+
+.icono {
+    @apply h-10 w-10 rounded-full flex items-center justify-center text-xl;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+
+}
+
+.barra1 {
+    @apply h-1 w-28 rounded bg-blue-200;
+    box-shadow: inset 6px 6px 33px #eaeaea,
+                inset -6px -6px 33px #ffffff;
+}
+
+.barra2 {
+    @apply h-1 rounded bg-gradient-to-l from-green-200 to-blue-500
+}

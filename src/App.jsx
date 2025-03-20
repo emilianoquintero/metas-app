@@ -5,14 +5,17 @@ import './App.css'
 import Encabezado from './components/share/Encabezado'
 import Principal from './components/share/Principal'
 import Pie from './components/share/Pie'
+import Meta from './components/lista/Meta'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className='app'>
       <Encabezado></Encabezado>
-      <Principal></Principal>
+      <Principal>
+        <Meta></Meta>
+      </Principal>
       <Pie></Pie>
     </div>
   )
