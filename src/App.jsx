@@ -1,23 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Encabezado from './components/share/Encabezado'
-import Principal from './components/share/Principal'
-import Pie from './components/share/Pie'
-import Meta from './components/lista/Meta'
+import { Route, Routes } from 'react-router'
+import Layout from './components/share/Layout'
+import Lista from './components/lista/Lista'
+import Detalle from './components/nueva/Detalles'
+import NoEncontrado from './components/share/NoEncontrado'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className='app'>
-      <Encabezado></Encabezado>
-      <Principal>
-        <Meta></Meta>
-      </Principal>
-      <Pie></Pie>
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout></Layout>}>
+        <Route index element={<Lista/>}></Route>
+        <Route path='/lista' element={<Lista/>}></Route>
+        <Route path='/nueva' element={<Detalle/>}></Route>
+      </Route>
+      <Route path='/*' element={<NoEncontrado/>}/>
+    </Routes>
   )
 }
 

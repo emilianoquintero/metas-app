@@ -13,23 +13,38 @@
 }
 
 .tarjeta {
-  @apply rounded-xl m-2 text-gray-700 text-xs mx-4;
+  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 overflow-hidden;
   background: #ffffff;
   box-shadow:  13px 13px 26px #b3b3b3,
                -13px -13px 26px #ffffff;
 }
 
 .boton {
-  @apply text-sm font-bold py-1 px-4 rounded-full;
+  @apply flex justify-center items-center text-xs font-bold py-1 px-4 rounded-full h-5;
 }
 
 .boton--gris {
-  @apply hover:bg-gray-200;
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  box-shadow:  7px 7px 13px #666666,
-              -7px -7px 13px #ffffff;
+  @apply hover:bg-red-600;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow:  5px 5px 10px #b3b3b3,
+             -5px -5px 10px #ffffff;
+}
 
+.boton--negro {
+  @apply hover:bg-gray-900 text-yellow-50;
+  background: #383838;
+  box-shadow:  5px 5px 10px #161616,
+               -5px -5px 10px #5a5a5a;
+}
 
+.label {
+  @apply block uppercase text-xs font-bold mb-6;
+}
+
+.input {
+  @apply w-full border-0 rounded-xl h-10 p-3;
+  box-shadow: inset 5px 5px 10px #666666,
+              inset -5px -5px 10px #ffffff;
 }
 
 /* @keyframes logo-spin {

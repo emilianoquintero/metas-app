@@ -9,15 +9,14 @@ function Encabezado() {
     <header className={estilos.encabezado}>
         <div className={estilos.contenedor}>
           <Vinculo 
-                href='/' 
+                to='/' 
                 texto='METAS APP'>
                 <img src={Logo} className={estilos.logo}></img>
           </Vinculo>
         </div>
         <nav className='nav'>
-          
           <Vinculo 
-                href='/'>
+                to='/'>
                 <img src={Perfil} className={estilos.icono}></img>
           </Vinculo>
         </nav>

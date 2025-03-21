@@ -12,9 +12,10 @@
 }
 
 .barra1 {
-    @apply h-1 w-28 rounded bg-blue-200;
-    box-shadow: inset 6px 6px 33px #eaeaea,
-                inset -6px -6px 33px #ffffff;
+    @apply h-1 w-30 rounded bg-blue-200;
+    background: #ffffff;
+    box-shadow: inset 19px 19px 10px #666666,
+                inset -19px -19px 10px #ffffff;
 }
 
 .barra2 {

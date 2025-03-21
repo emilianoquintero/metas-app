@@ -1,12 +1,15 @@
+import { Link } from 'react-router'
 import estilos from './Vinculo.module.css'
 
-function Vinculo({children, texto, href}) {
+function Vinculo({children, texto, to}) {
 
     return ( 
-        <a href={href} className={estilos.vinculo}>
+        <Link to={to} className={estilos.vinculo}>
+        
             {children}
             {texto && <span className={estilos.texto}>{texto}</span>}
-        </a>     
+         
+        </Link>
     )
   }
   
