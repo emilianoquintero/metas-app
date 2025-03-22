@@ -31,8 +31,15 @@
 }
 
 .boton--negro {
-  @apply hover:bg-gray-900 text-yellow-50;
+  @apply hover:bg-amber-50 text-yellow-50;
   background: #383838;
+  box-shadow:  5px 5px 10px #161616,
+               -5px -5px 10px #5a5a5a;
+}
+
+.boton--rojo {
+  @apply hover:bg-red-500 hover:text-yellow-50 border-red-500 text-red-500 ;
+  background: #e7e7e7;
   box-shadow:  5px 5px 10px #161616,
                -5px -5px 10px #5a5a5a;
 }
