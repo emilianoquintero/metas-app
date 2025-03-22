@@ -1,37 +1,17 @@
 import {Children, createContext, useReducer} from 'react';
 
-// const listaMock = [
-//     {
-//         id: '1',
-//         detalles: 'Correr por 30 mnts',
-//         periodo: 'dia',
-//         eventos: 1,
-//         icono: '🏃',
-//         meta: 365,
-//         plazo: '2030-01-01',
-//         completado: 100
-//     },
-//     {
-//         id: '2',
-//         detalles: 'Leer libros',
-//         periodo: 'ano',
-//         eventos: 6,
-//         icono: '📗',
-//         meta: 12,
-//         plazo: '2030-01-01',
-//         completado: 0
-//     },
-//     {
-//         id: '3',
-//         detalles: 'Viajar a parques nacionales',
-//         periodo: 'mes',
-//         eventos: 40,
-//         icono: '✈️',
-//         meta: 60,
-//         plazo: '2030-01-01',
-//         completado: 30
-//     }
-// ];
+const listaMock = [
+    {
+        id: '1',
+        detalles: 'Este es e; ejemplo de una meta',
+        periodo: 'dia',
+        eventos: 1,
+        icono: '🏃',
+        meta: 100,
+        plazo: '2030-01-01',
+        completado: 50
+    },
+];
 
 const memoria = localStorage.getItem('metas');
 const estadoInicial = memoria
@@ -63,18 +43,19 @@ function reductor(estado, accion){
             return nuevoEstado;
         };
         case 'crear':{
-            console.log(estado.objetos);
-            console.log(accion.meta);
-            
-            const id = Math.random();
+            const valores = Object.values(estado.objetos).map(objeto => objeto.id);
+            let id;
+            do {
+                id = String(Math.floor(Math.random() * 100)); // Generamos un nuevo ID como string
+              } while (valores.includes(id));
             const nuevoEstado = {
                 orden: [...estado.orden, id],
                 objetos: {
                     ...estado.objetos,
-                    [id]: accion.meta
+                    [id]: {id, ...accion.meta}
                 }
             };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
         case 'borrar':{
@@ -88,10 +69,12 @@ function reductor(estado, accion){
             localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
+        default:
+            throw new Error();
     }
 };
 
-// reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
+reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
 
 export const Contexto = createContext(null);
 

@@ -8,13 +8,13 @@ function Detalle() {
     const {id} = useParams();
 
     const [form, setform] = useState({
-        detalles: 'Correr por 30 mnts',
-        eventos: 1,
-        periodo: 'dia',
-        icono: '🏃',
-        meta: 365,
+        detalles: '',
+        eventos: '',
+        periodo: '',
+        icono: '',
+        meta: '',
         plazo: '',
-        completado: 0,
+        completado: '',
     });
 
     const [estado, enviar] = useContext(Contexto);
@@ -24,7 +24,6 @@ function Detalle() {
     const onChange = (event, prop) => {
         setform(estado => ({ ...estado, [prop]: event.target.value }));
     };
-
 
     useEffect(()=>{
         const metaMemoria = estado.objetos[id];
@@ -38,11 +37,20 @@ function Detalle() {
     const navegar = useNavigate();
 
     const crear = () => {
+        if (Object.values(form).some(valor => !valor)) {
+            alert('Es necesario completar todos los campos para crear una meta.');
+            return;
+        }
         enviar({tipo: 'crear', meta: form});
         navegar('/lista');
     };
 
     const actualizar = () => {
+        if ( form.completado > form.meta // Verificar si "completado" es mayor a "meta"
+          ) {
+            alert('Felicidades superaste tu meta, ahora toca crear una nueva.');
+            return;
+          }
         enviar({ tipo : 'actualizar', meta: form});
         navegar('/lista');
     };
@@ -65,7 +73,7 @@ function Detalle() {
                 <label className="label">
                     Describe tu meta
                     <input 
-                        placeholder="Ej. Leer 10 hojas al dia" 
+                        placeholder="Ej. Workout 1 hour a day" 
                         className="input"
                         value={detalles}
                         onChange={e => onChange(e, 'detalles')}>
@@ -83,7 +91,8 @@ function Detalle() {
 
                     </input>
                     <select className="input" value={periodo} onChange={e => onChange(e, 'periodo')}>
-                        {opcionesDeFrecuencia.map(opcion => <option value={opcion}>{opcion}</option>)}
+                        <option value="" disabled>Selecciona una opción</option>
+                        {opcionesDeFrecuencia.map(opcion => <option key={opcion} value={opcion}>{opcion}</option>)}
                     </select>
                     </div>
                 </label>
@@ -102,8 +111,9 @@ function Detalle() {
                 <label className="label">
                     Escoje el icono para la meta
                     <select className="input" value={icono} onChange={e => onChange(e, 'icono')}>
+                        <option value="" disabled>Selecciona una opción</option>
                         {opcionesDeIconos.map(opcion => 
-                        <option value={opcion}>{opcion}</option>)}
+                        <option key={opcion} value={opcion}>{opcion}</option>)}
                     </select>
                 </label>
             </form>

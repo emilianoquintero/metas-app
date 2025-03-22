@@ -13,10 +13,10 @@ function App() {
         <Route index element={<Lista/>}></Route>
         <Route path='/lista' element={<Lista/>}>
           <Route path='/lista/:id' 
-          element={
-          <Modal>
-            <Detalle></Detalle>
-          </Modal>}/>
+            element={
+            <Modal>
+              <Detalle></Detalle>
+            </Modal>}/>
         </Route>
         <Route path='/nueva' element={<Detalle/>}></Route>
       </Route>
