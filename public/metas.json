@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "detalles": "This is an Example of a goal",
+        "periodo": "dia",
+        "eventos": 1,
+        "icono": "🏃",
+        "meta": 100,
+        "plazo": "'2030-01-01'",
+        "completado": 50
+    },
+    {
+        "id": "2",
+        "detalles": "Read 2 Books",
+        "periodo": "year",
+        "eventos": 6,
+        "icono": "📗",
+        "meta": 12,
+        "plazo": "'2030-01-01'",
+        "completado": 0
+    },
+    {
+        "id": "3",
+        "detalles": "alv",
+        "periodo": "year",
+        "eventos": 6,
+        "icono": "📗",
+        "meta": 12,
+        "plazo": "'2030-01-01'",
+        "completado": 0
+    }
+]

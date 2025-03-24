@@ -5,8 +5,36 @@ import Lista from './components/lista/Lista'
 import Detalle from './components/nueva/Detalles'
 import NoEncontrado from './components/share/NoEncontrado'
 import Modal from './components/share/Modal'
+import { useContext, useEffect } from 'react'
+import { pedirMetas } from './services/Pedidos'
+import { Contexto } from './services/Memoria'
 
 function App() {
+
+  const [,enviar] = useContext(Contexto);
+
+  useEffect(() => {
+
+    async function fetchData() {
+
+        const metas = await pedirMetas();
+
+        enviar({ tipo: "colocar", metas });
+
+    }
+
+    fetchData();
+
+}, []);
+  
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const metas = await pedirMetas();
+  //     enviar({ tipo: 'colocar', metas });
+  //   }
+  //   fetchData();  
+  // }, []);
+
   return (
     <Routes>
       <Route path='/' element={<Layout></Layout>}>

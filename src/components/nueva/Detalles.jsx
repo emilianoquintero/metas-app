@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import estilos from './Detalles.module.css'
 import { Contexto } from '../../services/Memoria';
 import { useNavigate, useParams } from 'react-router';
+import { actualizarMetas, borrarMeta, crearMeta } from '../../services/Pedidos';
 
 function Detalle() {
 
@@ -36,27 +37,30 @@ function Detalle() {
 
     const navegar = useNavigate();
 
-    const crear = () => {
+    const crear = async () => {
         if (Object.values(form).some(valor => !valor)) {
             alert('Es necesario completar todos los campos para crear una meta.');
             return;
         }
-        enviar({tipo: 'crear', meta: form});
+        const nuevaMeta = await crearMeta();
+        enviar({tipo: 'crear', meta: nuevaMeta});
         navegar('/lista');
     };
 
-    const actualizar = () => {
+    const actualizar = async () => {
         if ( form.completado > form.meta // Verificar si "completado" es mayor a "meta"
           ) {
             alert('Felicidades superaste tu meta, ahora toca crear una nueva.');
             return;
           }
-        enviar({ tipo : 'actualizar', meta: form});
+        const metaActualizada = await actualizarMetas();
+        enviar({ tipo : 'actualizar', meta: metaActualizada});
         navegar('/lista');
     };
 
-    const borrar = () => {
-        enviar({ tipo : 'borrar', id});
+    const borrar = async () => {
+        const idBorrado = await borrarMeta();
+        enviar({ tipo : 'borrar', id: idBorrado});
         navegar('/lista');
     };
 

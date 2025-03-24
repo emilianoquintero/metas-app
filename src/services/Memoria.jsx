@@ -13,13 +13,18 @@ const listaMock = [
     },
 ];
 
-const memoria = localStorage.getItem('metas');
-const estadoInicial = memoria
-    ? JSON.parse(memoria)
-    : {
-    orden: [],
+// const memoria = localStorage.getItem('metas');
+// const estadoInicial = memoria
+//     ? JSON.parse(memoria)
+//     : {
+//     orden: [],
+//     objetos: {}
+// };
+
+const estadoInicial = {
+    orden : [],
     objetos: {}
-};
+}
 
 function reductor(estado, accion){
     switch(accion.tipo){
@@ -29,7 +34,7 @@ function reductor(estado, accion){
                 orden: metas.map(meta => meta.id),
                 objetos: metas.reduce((objeto, meta) => ({ ...objeto, [meta.id]: meta}), {})
             };
-            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
         case 'actualizar':{
@@ -39,23 +44,32 @@ function reductor(estado, accion){
                 ...accion.meta
             };
             const nuevoEstado = { ...estado };
-            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
-        case 'crear':{
-            const valores = Object.values(estado.objetos).map(objeto => objeto.id);
-            let id;
-            do {
-                id = String(Math.floor(Math.random() * 100)); // Generamos un nuevo ID como string
-              } while (valores.includes(id));
+        case 'crear': {
+            // const valores = Object.values(estado.objetos).map(objeto => objeto.id);
+            // let id;
+            // do {
+            //     id = String(Math.floor(Math.random() * 100)); 
+            //   } while (valores.includes(id));
+            // const nuevoEstado = {
+            //     orden: [...estado.orden, id],
+            //     objetos: {
+            //         ...estado.objetos,
+            //         [id]: {id, ...accion.meta}
+            //     }
+            // };
+            
+            const id = accion.meta.id;
             const nuevoEstado = {
                 orden: [...estado.orden, id],
                 objetos: {
                     ...estado.objetos,
-                    [id]: {id, ...accion.meta}
+                    [id]: accion.meta
                 }
             };
-            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
         case 'borrar':{
@@ -66,7 +80,7 @@ function reductor(estado, accion){
                 orden: nuevoOrden,
                 objetos:  estado.objetos
             };
-            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
         default:
@@ -74,7 +88,7 @@ function reductor(estado, accion){
     }
 };
 
-reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
+// reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
 
 export const Contexto = createContext(null);
 
