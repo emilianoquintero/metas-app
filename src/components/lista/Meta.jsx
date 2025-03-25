@@ -14,13 +14,13 @@ function Meta({id, detalles, periodo, eventos, icono, meta, plazo, completado })
             </div>
             <div className='flex items-center'>
                 <div className='relative m-2 mx-5'>
-                    <p className='text-center'>{completado} de {meta}</p>
+                    <p className='text-center'>{completado} of {meta}</p>
                     <div className={estilos.barra1}>
                         <div style={{ width: `${Math.round((completado/meta)*100)}%`}}
                         className={estilos.barra2}></div>
                     </div>
                 </div>
-                <button className='boton boton--gris'>Completado</button>
+                <button className='boton boton--gris'>Complete</button>
             </div>
         </Link>
     )

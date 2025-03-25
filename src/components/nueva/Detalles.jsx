@@ -68,16 +68,16 @@ function Detalle() {
         navegar('/lista');
     };
 
-    const opcionesDeFrecuencia = ['Dia', 'Semana', 'Mes', 'Ano'];
+    const opcionesDeFrecuencia = ['Day', 'Week', 'Mont', 'Year'];
     const opcionesDeIconos = ['✈️', '📗', '🏃', '🏋️‍♀️','💻'];
 
     return (
         <div className="tarjeta">
             <form className="p-4">
                 <label className="label">
-                    Describe tu meta
+                    Discribe your Goal
                     <input 
-                        placeholder="Ej. Workout 1 hour a day" 
+                        placeholder="Example: Work out for 1 hour per day" 
                         className="input"
                         value={detalles}
                         onChange={e => onChange(e, 'detalles')}>
@@ -85,7 +85,7 @@ function Detalle() {
                 </label>
                 
                 <label className="label">
-                    Con que frecuencia deseas cumplir tu meta?<span>(ej. 1 vez a la semana)</span>
+                    How often do you want to achive your goal?<span>( Ex. 1 per Week)</span>
                     <div className="flex mb-6">
                     <input 
                         type="number" 
@@ -95,27 +95,27 @@ function Detalle() {
 
                     </input>
                     <select className="input" value={periodo} onChange={e => onChange(e, 'periodo')}>
-                        <option value="" disabled>Selecciona una opción</option>
+                        <option value="" disabled>Select an option</option>
                         {opcionesDeFrecuencia.map(opcion => <option key={opcion} value={opcion}>{opcion}</option>)}
                     </select>
                     </div>
                 </label>
                 <label className="label">
-                    Cuantas veces deseas completar esta meta
+                    How many times do you want to complete this goal?
                     <input type="number" className="input" value={meta} onChange={e => onChange(e, 'meta')}></input>
                 </label>
                 <label className="label">
-                    Tienes una fecha limite
+                    Do you have a deadline?
                     <input type="date" className="input" value={plazo} onChange={e => onChange(e, 'plazo')}></input>
                 </label>
                 <label className="label">
-                    Cuantas veces haz acompletado esta meta
+                    How many times have you completed this goal?
                     <input type="number" className="input" value={completado} onChange={e => onChange(e, 'completado')}></input>
                 </label>
                 <label className="label">
-                    Escoje el icono para la meta
+                    Chosse an Icon for your goal
                     <select className="input" value={icono} onChange={e => onChange(e, 'icono')}>
-                        <option value="" disabled>Selecciona una opción</option>
+                        <option value="" disabled>Select an option</option>
                         {opcionesDeIconos.map(opcion => 
                         <option key={opcion} value={opcion}>{opcion}</option>)}
                     </select>
@@ -125,19 +125,19 @@ function Detalle() {
                 {!id && <button 
                     className='boton boton--negro'
                     onClick={crear}
-                    >Crear</button> }
+                    >Create</button> }
                 {id && <button 
                     className='boton boton--gris'
                     onClick={actualizar}
-                    >Actualizar</button> }
+                    >Update</button> }
                 {id && <button 
                     className='boton boton--rojo'
                     onClick={borrar}
-                    >Borrar</button> }
+                    >Delete</button> }
                 <button 
                     className='boton boton--gris'
                     onClick={cancelar}
-                    >Cancelar</button>
+                    >Cancel</button>
             </div>
         </div>
     )

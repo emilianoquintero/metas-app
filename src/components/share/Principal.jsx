@@ -11,12 +11,12 @@ function Principal({children}) {
             <aside className={estilos.aside}>
                 <Vinculo 
                 to='/lista' 
-                texto='Lista de Metas'>
+                texto='Goals List'>
                     <img src={lista} className={estilos.icono}></img>
                 </Vinculo>
                 <Vinculo 
                 to='/nueva' 
-                texto='Nueva Meta'>
+                texto='New Goal'>
                     <img src={nueva} className={estilos.icono}></img>
                 </Vinculo>
             </aside>

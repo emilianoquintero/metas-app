@@ -10,7 +10,7 @@ function Encabezado() {
         <div className={estilos.contenedor}>
           <Vinculo 
                 to='/' 
-                texto='METAS APP'>
+                texto='GoalsApp'>
                 <img src={Logo} className={estilos.logo}></img>
           </Vinculo>
         </div>

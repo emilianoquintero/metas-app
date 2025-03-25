@@ -4,7 +4,7 @@ function Pie() {
 
     return (
       <footer className={estilos.pie}>
-        <small>Desarrollado por Emiliano</small>
+        <small>Developed by Emiliano Quintero. All rights reserved.</small>
       </footer>
     )
   }

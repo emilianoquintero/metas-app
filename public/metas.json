@@ -1,8 +1,8 @@
 [
     {
         "id": "1",
-        "detalles": "This is an Example of a goal",
-        "periodo": "dia",
+        "detalles": "This is the first example of a goal",
+        "periodo": "Week",
         "eventos": 1,
         "icono": "🏃",
         "meta": 100,
@@ -11,22 +11,22 @@
     },
     {
         "id": "2",
-        "detalles": "Read 2 Books",
-        "periodo": "year",
-        "eventos": 6,
+        "detalles": "Read 1 Book",
+        "periodo": "Year",
+        "eventos": 1,
         "icono": "📗",
-        "meta": 12,
+        "meta": 1,
         "plazo": "'2030-01-01'",
-        "completado": 0
+        "completado": 1
     },
     {
         "id": "3",
-        "detalles": "alv",
-        "periodo": "year",
-        "eventos": 6,
-        "icono": "📗",
-        "meta": 12,
+        "detalles": "Run for 30 minuts per day",
+        "periodo": "Day",
+        "eventos": 1,
+        "icono": "🏃",
+        "meta": 333,
         "plazo": "'2030-01-01'",
-        "completado": 0
+        "completado": 33
     }
 ]
