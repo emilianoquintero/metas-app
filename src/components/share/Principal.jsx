@@ -10,12 +10,12 @@ function Principal({children}) {
         <div className={estilos.principal}>
             <aside className={estilos.aside}>
                 <Vinculo 
-                to='/lista' 
+                to='lista' 
                 texto='Goals List'>
                     <img src={lista} className={estilos.icono}></img>
                 </Vinculo>
                 <Vinculo 
-                to='/nueva' 
+                to='nueva' 
                 texto='New Goal'>
                     <img src={nueva} className={estilos.icono}></img>
                 </Vinculo>

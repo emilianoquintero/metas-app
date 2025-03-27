@@ -6,7 +6,7 @@
         "eventos": 1,
         "icono": "🏃",
         "meta": 100,
-        "plazo": "'2030-01-01'",
+        "plazo": "2030-01-01",
         "completado": 50
     },
     {
@@ -16,7 +16,7 @@
         "eventos": 1,
         "icono": "📗",
         "meta": 1,
-        "plazo": "'2030-01-01'",
+        "plazo": "2030-01-01",
         "completado": 1
     },
     {
@@ -26,7 +26,7 @@
         "eventos": 1,
         "icono": "🏃",
         "meta": 333,
-        "plazo": "'2030-01-01'",
+        "plazo": "2030-01-01",
         "completado": 33
     }
 ]

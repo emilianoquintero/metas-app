@@ -4,7 +4,7 @@ import estilos from './Meta.module.css'
 function Meta({id, detalles, periodo, eventos, icono, meta, plazo, completado }) {
 
     return (
-        <Link to={`/lista/${id}`} className={estilos.meta + ' tarjeta'}>
+        <Link to={`${id}`} className={estilos.meta + ' tarjeta'}>
             <div className='flex items-center'>
                 <div className={estilos.icono}>{icono}</div>
                 <p className='text-xl ml-5 mr-10'>{eventos}
