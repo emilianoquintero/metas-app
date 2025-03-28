@@ -46,8 +46,12 @@ function Detalle() {
             alert('Es necesario completar todos los campos para crear una meta.');
             return;
         }
-        const nuevaMeta = await crearMeta();
-        enviar({tipo: 'crear', meta: nuevaMeta});
+
+        // 5. LocalStorage. Se cancela la solicitud a api para solo usar localstorage.
+        // const nuevaMeta = await crearMeta();
+        // enviar({tipo: 'crear', meta: nuevaMeta});
+
+        enviar({tipo: 'crear', meta: form});
         navegar('/metas-app-gh-pages/lista');
     };
 
@@ -57,14 +61,22 @@ function Detalle() {
             alert('Felicidades superaste tu meta, ahora toca crear una nueva.');
             return;
           }
-        const metaActualizada = await actualizarMetas();
-        enviar({ tipo : 'actualizar', meta: metaActualizada});
+
+        // 5. LocalStorage. Se cancela la solicitud a api actualizarMetas() para solo usar localstorage.
+        // const metaActualizada = await actualizarMetas();
+        // enviar({ tipo : 'actualizar', meta: metaActualizada});
+
+        enviar({ tipo : 'actualizar', meta: form});
         navegar('/metas-app-gh-pages/lista');
     };
 
     const borrar = async () => {
-        const idBorrado = await borrarMeta();
-        enviar({ tipo : 'borrar', id: idBorrado});
+
+        // 5. LocalStorage. Se cancela la solicitud a api para solo usar localstorage.
+        // const idBorrado = await borrarMeta();
+        // enviar({ tipo : 'borrar', id: idBorrado});
+
+        enviar({ tipo : 'borrar', id});
         navegar('/metas-app-gh-pages/lista');
     };
 

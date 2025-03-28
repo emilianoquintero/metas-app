@@ -15,25 +15,17 @@ function App() {
   // Se declara enviar para usar el contexto declarado en Memoria
   const [,enviar] = useContext(Contexto);
 
-  // hook useEffect
+  // Hook useEffect
   // Se usa para manejar componentes funcionales, como obtener datos, suscribirse a eventos o manipular el DOM.
   // ([]). Un array vacío significa que este efecto solo se ejecutará una vez, después de que el componente se monte.
-  useEffect(() => {
-    async function fetchData() {
-        const metas = await pedirMetas();
-        enviar({ tipo: "colocar", metas });
-    }
-    fetchData();
-}, []);
-  
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const metas = await pedirMetas();
-  //     enviar({ tipo: 'colocar', metas });
-  //   }
-  //   fetchData();  
+  // Se omite ya que no estamos obteniendo las metas desde el JSON
+  //   useEffect(() => {
+  //     async function fetchData() {
+  //         const metas = await pedirMetas();
+  //         enviar({ tipo: "colocar", metas });
+  //     }
+  //     fetchData();
   // }, []);
-
 
   // Renderisa Layout y dentro de este se encuentra Outlet para renderizar rutas anidadas. Y se renderizan dentro de Layout y Outlet.
 

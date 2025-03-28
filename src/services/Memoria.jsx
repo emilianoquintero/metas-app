@@ -3,76 +3,106 @@ import {Children, createContext, useReducer} from 'react';
 const listaMock = [
     {
         id: '1',
-        detalles: 'Este es e; ejemplo de una meta',
-        periodo: 'dia',
+        detalles: 'This is an example of a GOAL',
+        periodo: 'day',
         eventos: 1,
         icono: '🏃',
         meta: 100,
         plazo: '2030-01-01',
         completado: 50
     },
+    {
+        id: '2',
+        detalles: 'Read 1 book per month for a year',
+        periodo: 'month',
+        eventos: 1,
+        icono: '📗',
+        meta: 12,
+        plazo: '2026-01-01',
+        completado: 3
+    },
 ];
 
-// Para almacenar las metas en localstorage
-// const memoria = localStorage.getItem('metas');
-// const estadoInicial = memoria
-//     ? JSON.parse(memoria)
-//     : {
-//     orden: [],
-//     objetos: {}
-// };
-
-const estadoInicial = {
-    orden : [],
+// 2. Pasos LocalStorage. Almacenar contenido de metas en el estado inicial.
+const memoria = localStorage.getItem('metas');
+const estadoInicial = memoria
+    ? JSON.parse(memoria)
+    : {
+    orden: [],
     objetos: {}
-}
+};
+
+// const estadoInicial = {
+//     orden : [],
+//     objetos: {}
+// }
 
 function reductor(estado, accion){
     switch(accion.tipo){
         case 'colocar':{
+            // 3. Pasos LocalStorage. Usar LocalStorage para todas las acciones
             const metas = accion.metas;
             const nuevoEstado = {
                 orden: metas.map(meta => meta.id),
                 objetos: metas.reduce((objeto, meta) => ({ ...objeto, [meta.id]: meta}), {})
             };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
+
+            // const metas = accion.metas;
+            // const nuevoEstado = {
+            //     orden: metas.map(meta => meta.id),
+            //     objetos: metas.reduce((objeto, meta) => ({ ...objeto, [meta.id]: meta}), {})
+            // };
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // return nuevoEstado;
         };
         case 'actualizar':{
+            // const id = accion.meta.id;
+            // estado.objetos[id] = {
+            //     ...estado.objetos[id],
+            //     ...accion.meta
+            // };
+            // const nuevoEstado = { ...estado };
+            // return nuevoEstado;
+
             const id = accion.meta.id;
             estado.objetos[id] = {
                 ...estado.objetos[id],
                 ...accion.meta
             };
             const nuevoEstado = { ...estado };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
+
         };
         case 'crear': {
-            // const valores = Object.values(estado.objetos).map(objeto => objeto.id);
-            // let id;
-            // do {
-            //     id = String(Math.floor(Math.random() * 100)); 
-            //   } while (valores.includes(id));
-            // const nuevoEstado = {
-            //     orden: [...estado.orden, id],
-            //     objetos: {
-            //         ...estado.objetos,
-            //         [id]: {id, ...accion.meta}
-            //     }
-            // };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
-            // return nuevoEstado;
-            
-            const id = accion.meta.id;
+
+            // 4. Pasos LocalStorage. Para la opcion crear se agrego la creacion de un id aleatorio y diferente a los creados.
+            const valores = Object.values(estado.objetos).map(objeto => objeto.id);
+            let id;
+            do {
+                id = String(Math.floor(Math.random() * 100)); 
+              } while (valores.includes(id));
             const nuevoEstado = {
                 orden: [...estado.orden, id],
                 objetos: {
                     ...estado.objetos,
-                    [id]: accion.meta
+                    [id]: {id, ...accion.meta}
                 }
             };
+            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
+            
+            // const id = accion.meta.id;
+            // const nuevoEstado = {
+            //     orden: [...estado.orden, id],
+            //     objetos: {
+            //         ...estado.objetos,
+            //         [id]: accion.meta
+            //     }
+            // };
+            // return nuevoEstado;
         };
         case 'borrar':{
             const id = accion.id;
@@ -82,16 +112,25 @@ function reductor(estado, accion){
                 orden: nuevoOrden,
                 objetos:  estado.objetos
             };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
+            
+            // const id = accion.id;
+            // const nuevoOrden = estado.orden.filter(item => item !== id);
+            // delete estado.objetos[id];
+            // const nuevoEstado = {
+            //     orden: nuevoOrden,
+            //     objetos:  estado.objetos
+            // };
+            // return nuevoEstado;
         };
         default:
             throw new Error();
     }
 };
 
-// Coloca la lista inicial 
-// reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
+// 1. Pasos LocalStorage. Guardar metas = listaMock en LocalStorage
+reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
 
 //crear un contexto, que es una forma de compartir datos entre componentes sin tener que pasar las propiedades manualmente en cada nivel.
 export const Contexto = createContext(null);
