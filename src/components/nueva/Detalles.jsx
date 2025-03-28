@@ -8,6 +8,10 @@ function Detalle() {
 
     const {id} = useParams();
 
+    // Hook useState
+    // Defines un estado llamado form, que es un objeto que contiene los valores actuales de los campos del formulario.
+    // setform es la función que se utiliza para actualizar ese estado.
+    // useState Estás inicializando el estado form
     const [form, setform] = useState({
         detalles: '',
         eventos: '',

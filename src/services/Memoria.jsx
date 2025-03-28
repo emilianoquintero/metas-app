@@ -13,6 +13,7 @@ const listaMock = [
     },
 ];
 
+// Para almacenar las metas en localstorage
 // const memoria = localStorage.getItem('metas');
 // const estadoInicial = memoria
 //     ? JSON.parse(memoria)
@@ -60,6 +61,8 @@ function reductor(estado, accion){
             //         [id]: {id, ...accion.meta}
             //     }
             // };
+            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+            // return nuevoEstado;
             
             const id = accion.meta.id;
             const nuevoEstado = {
@@ -69,7 +72,6 @@ function reductor(estado, accion){
                     [id]: accion.meta
                 }
             };
-            // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
             return nuevoEstado;
         };
         case 'borrar':{
@@ -88,13 +90,22 @@ function reductor(estado, accion){
     }
 };
 
+// Coloca la lista inicial 
 // reductor(estadoInicial, {tipo: 'colocar', metas: listaMock});
 
+//crear un contexto, que es una forma de compartir datos entre componentes sin tener que pasar las propiedades manualmente en cada nivel.
 export const Contexto = createContext(null);
 
 function Memoria({ children }) {
+
+    // hook useReducer 
+    // reductor: Es una función reductora (reducer) que define cómo cambiará el estado en respuesta a las acciones enviadas. Su estructura suele ser (estadoActual, accion) => nuevoEstado
+    // estadoInicial: Es el estado inicial que quieres establecer al comenzar.
     const [estado, enviar] = useReducer(reductor, estadoInicial);
     return(
+
+        // El Provider es un componente especial que viene con cada contexto creado con createContext.  
+        // El atributo value establece el valor que los componentes hijos pueden consumir utilizando el contexto (useContext(Contexto)).
         <Contexto.Provider value={[estado, enviar]}>
             {children}
         </Contexto.Provider>

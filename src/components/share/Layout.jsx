@@ -7,6 +7,8 @@ import Principal from "./Principal"
 
 function Layout() {
 
+  // <Outlet> es una parte del paquete React Router y se utiliza en aplicaciones que tienen rutas anidadas.
+
     return (
         <div className='app'>
           <Encabezado></Encabezado>

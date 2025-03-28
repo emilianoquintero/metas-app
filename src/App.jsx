@@ -12,8 +12,12 @@ import { Contexto } from './services/Memoria'
 
 function App() {
 
+  // Se declara enviar para usar el contexto declarado en Memoria
   const [,enviar] = useContext(Contexto);
 
+  // hook useEffect
+  // Se usa para manejar componentes funcionales, como obtener datos, suscribirse a eventos o manipular el DOM.
+  // ([]). Un array vacío significa que este efecto solo se ejecutará una vez, después de que el componente se monte.
   useEffect(() => {
     async function fetchData() {
         const metas = await pedirMetas();
@@ -30,9 +34,12 @@ function App() {
   //   fetchData();  
   // }, []);
 
+
+  // Renderisa Layout y dentro de este se encuentra Outlet para renderizar rutas anidadas. Y se renderizan dentro de Layout y Outlet.
+
   return (
     <Routes>
-      <Route path='metas-app-gh-pages/' element={<Layout></Layout>}>
+      <Route path='metas-app-gh-pages/' element={<Layout/>}>
         <Route index element={<Presentacion/>}></Route>
         <Route path='lista' element={<Lista/>}>
           <Route path=':id' 
