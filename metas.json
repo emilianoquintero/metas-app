@@ -1,10 +1,10 @@
 [
     {
         "id": "1",
-        "detalles": "First Example. If this app is not connected to a database, this goal will always be the one that is edited or erased.",
+        "detalles": "This is the first example of a goal",
         "periodo": "Week",
         "eventos": 1,
-        "icono": "💻",
+        "icono": "🏃",
         "meta": 100,
         "plazo": "2030-01-01",
         "completado": 50

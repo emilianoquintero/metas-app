@@ -1,11 +1,10 @@
-
-    {
-        "id": "1",
-        "detalles": "This new goal replaced the first example because there is no connection to the database.",
-        "periodo": "year",
-        "eventos": 6,
-        "icono": "✈️",
-        "meta": 12,
-        "plazo": "2030-01-01",
-        "completado": 0
-    }
+{
+    "id": "1",
+    "detalles": "This new goal replaced the first example because there is no connection to the database.",
+    "periodo": "year",
+    "eventos": 6,
+    "icono": "✈️",
+    "meta": 12,
+    "plazo": "2030-01-01",
+    "completado": 0
+}
