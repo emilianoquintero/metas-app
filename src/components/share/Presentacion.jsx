@@ -11,7 +11,7 @@ function Presentacion() {
                 <div className={estilos.description}>
                 This is an application built using Vite and React. It allows you to create, edit, and delete goals.     
                 The app leverages localStorage for data persistence and integrates APIs to enable seamless database connectivity. For further details, you can visit the repository
-                <a href='https://github.com/emilianoquintero/metas-app-gh-pages/tree/main' target="_blank"> here</a>.
+                <a href='https://github.com/emilianoquintero/metas-app/tree/main' target="_blank"> here</a>.
                 </div>
             </div>
         </div>

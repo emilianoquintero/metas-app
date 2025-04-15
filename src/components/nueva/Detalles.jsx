@@ -34,7 +34,7 @@ function Detalle() {
         const metaMemoria = estado.objetos[id];
         if (!id) return;
         if (!metaMemoria){
-            return navegar('/metas-app-gh-pages/lista');
+            return navegar('/metas-app/lista');
         }
         setform(estado.objetos[id]);
     }, [id]);
@@ -52,7 +52,7 @@ function Detalle() {
         // enviar({tipo: 'crear', meta: nuevaMeta});
 
         enviar({tipo: 'crear', meta: form});
-        navegar('/metas-app-gh-pages/lista');
+        navegar('/metas-app/lista');
     };
 
     const actualizar = async () => {
@@ -67,7 +67,7 @@ function Detalle() {
         // enviar({ tipo : 'actualizar', meta: metaActualizada});
 
         enviar({ tipo : 'actualizar', meta: form});
-        navegar('/metas-app-gh-pages/lista');
+        navegar('/metas-app/lista');
     };
 
     const borrar = async () => {
@@ -77,11 +77,11 @@ function Detalle() {
         // enviar({ tipo : 'borrar', id: idBorrado});
 
         enviar({ tipo : 'borrar', id});
-        navegar('/metas-app-gh-pages/lista');
+        navegar('/metas-app/lista');
     };
 
     const cancelar = () => {
-        navegar('/metas-app-gh-pages/lista');
+        navegar('/metas-app/lista');
     };
 
     const opcionesDeFrecuencia = ['Day', 'Week', 'Mont', 'Year'];

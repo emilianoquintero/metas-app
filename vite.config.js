@@ -10,5 +10,5 @@ export default defineConfig({
     tailwindcss(),
     svgr()
   ],
-  base: "/metas-app-gh-pages"
+  base: "/metas-app"
 })

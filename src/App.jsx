@@ -31,7 +31,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path='metas-app-gh-pages/' element={<Layout/>}>
+      <Route path='metas-app/' element={<Layout/>}>
         <Route index element={<Presentacion/>}></Route>
         <Route path='lista' element={<Lista/>}>
           <Route path=':id' 

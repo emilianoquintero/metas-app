@@ -2,7 +2,7 @@
   "name": "metas-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://emilianoquintero.github.io/metas-app-gh-pages/",
+  "homepage": "https://emilianoquintero.github.io/metas-app/",
   "type": "module",
   "scripts": {
     "predeploy" : "npm run build",
